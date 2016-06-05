@@ -28,7 +28,6 @@
     "body-parser": "^1.15.1",
     "classnames": "^2.2.5",
     "express": "^4.13.4",
-    "mongodb": "^2.1.21",
     "mongoose": "^4.4.19",
     "react": "^15.1",
     "react-dom": "^15.1",

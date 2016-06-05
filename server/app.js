@@ -1,6 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const { MongoClient } = require('mongodb');
+const mongoose = require('mongoose');
 
 const routes = require('./routes');
 
@@ -12,13 +12,7 @@ const MONGO_URL = 'mongodb://admin:x4czTP4J@ds023373.mlab.com:23373/todo';
 
 app.use('/', routes);
 
-MongoClient
-  .connect(MONGO_URL)
-  .then(() => {
-    console.log('MongoDB connected');
-    app.listen(PORT);
-    console.log('Server listening on port ' + PORT);
-  })
-  .catch(err => {
-    throw err;
-  });
+mongoose.connect(MONGO_URL);
+
+app.listen(PORT);
+console.log(`Server listening on port ${PORT}`); // eslint-disable-line no-console
