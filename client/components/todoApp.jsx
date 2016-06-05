@@ -8,17 +8,32 @@ export default class App extends Component {
     this.state = {
       todos: [],
     };
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+  handleSubmit(newTodoTitle) {
+    const newTodo = {
+      title: newTodoTitle,
+      completed: false,
+    };
+    this.setState({
+      todos: [...this.state.todos, newTodo],
+    });
   }
   render() {
+    console.log(this.state);
     return (
       <main className="todoapp">
-        <Header />
+        <Header handleSubmit={this.handleSubmit} />
         <ul className="todo-list">
-          <Item
-            todo={{ title: 'title todo' }}
-            completed={false}
-            editing={false}
-          />
+          {
+            this.state.todos.map((todo, key) => (
+              <Item
+                todo={todo}
+                editing={false}
+                key={key}
+              />
+            ))
+          }
         </ul>
       </main>
     );

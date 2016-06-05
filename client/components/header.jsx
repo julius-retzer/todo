@@ -1,15 +1,42 @@
-import React from 'react';
+import React, { Component, PropTypes } from 'react';
+import { ENTER_KEY } from '../constants';
 
-const Header = () => {
-  return (
-    <header className="header">
-      <h1>Todos</h1>
-      <input
-        className="new-todo"
-        placeholder="What needs to be done?"
-      />
-    </header>
-  );
+class Header extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      text: '',
+    };
+    this.handleKeyDown = this.handleKeyDown.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+  }
+  handleKeyDown(e) {
+    if (e.which === ENTER_KEY) {
+      const text = e.target.value.trim();
+      this.props.handleSubmit(text);
+    }
+  }
+  handleChange(e) {
+    this.setState({ text: e.target.value });
+  }
+  render() {
+    return (
+      <header className="header">
+        <h1>Todos</h1>
+        <input
+          className="new-todo"
+          placeholder="What needs to be done?"
+          value={this.state.text}
+          onKeyDown={this.handleKeyDown}
+          onChange={this.handleChange}
+        />
+      </header>
+    );
+  }
+}
+
+Header.propTypes = {
+  handleSubmit: PropTypes.func.isRequired,
 };
 
 export default Header;

@@ -1,11 +1,11 @@
 import React from 'react';
 import classNames from 'classnames';
 
-const TodoItem = ({todo, completed, editing}) => {
+const TodoItem = ({todo, editing}) => {
+  console.log(todo);
   return (
     <li className={classNames({
-          completed: completed,
-          editing: editing
+          completed: todo.completed,
         })}>
       <div className="view">
         <input
@@ -13,7 +13,7 @@ const TodoItem = ({todo, completed, editing}) => {
           type="checkbox"
           checked={todo.completed}
         />
-      <label>
+        <label>
           {todo.title}
         </label>
         <button className="destroy"/>
