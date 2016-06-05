@@ -1,8 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 
-const TodoItem = ({todo, editing}) => {
-  console.log(todo);
+const TodoItem = ({todo, handleComplete}) => {
   return (
     <li className={classNames({
           completed: todo.completed,
@@ -12,6 +11,7 @@ const TodoItem = ({todo, editing}) => {
           className="toggle"
           type="checkbox"
           checked={todo.completed}
+          onChange={() => handleComplete(todo)}
         />
         <label>
           {todo.title}

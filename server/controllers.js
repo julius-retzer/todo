@@ -23,7 +23,22 @@ function getTodos(req, res) {
     });
 }
 
+function patchTodo(req, res) {
+  const query = { _id: req.params.todoId };
+  const update = { completed: req.body.completed };
+  const options = { new: true };
+  Todo
+    .findOneAndUpdate(query, update, options)
+    .then(result => {
+      res.json(result);
+    })
+    .catch(err => {
+      res.send(err);
+    });
+}
+
 module.exports = {
   postTodo,
   getTodos,
+  patchTodo,
 };

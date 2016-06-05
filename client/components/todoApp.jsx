@@ -11,6 +11,7 @@ export default class App extends Component {
       todos: [],
     };
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleComplete = this.handleComplete.bind(this);
   }
 
   componentDidMount() {
@@ -48,7 +49,27 @@ export default class App extends Component {
       throw err;
     });
   }
-
+  handleComplete(todoToUpdate) {
+    fetch(`${API_URL}/${todoToUpdate._id}`, {
+      method: 'PATCH',
+      headers: JSON_CONTENT_TYPE,
+      body: JSON.stringify({ completed: !todoToUpdate.completed }),
+    })
+    .then(response => response.json())
+    .then(updatedTodo => {
+      console.log(updatedTodo);
+      const todos = this.state.todos.map(todo => {
+        if (todo._id === updatedTodo._id) {
+          return updatedTodo;
+        }
+        return todo;
+      });
+      this.setState({ todos });
+    })
+    .catch(err => {
+      throw err;
+    });
+  }
   render() {
     console.log(this.state.todos);
     return (
@@ -60,6 +81,7 @@ export default class App extends Component {
               <Item
                 todo={todo}
                 key={key}
+                handleComplete={this.handleComplete}
               />
             ))
           }
