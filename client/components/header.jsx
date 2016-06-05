@@ -2,8 +2,8 @@ import React, { Component, PropTypes } from 'react';
 import { ENTER_KEY } from '../constants';
 
 class Header extends Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     this.state = {
       text: '',
     };
@@ -13,6 +13,7 @@ class Header extends Component {
   handleKeyDown(e) {
     if (e.which === ENTER_KEY) {
       const text = e.target.value.trim();
+      this.setState({ text: '' });
       this.props.handleSubmit(text);
     }
   }
