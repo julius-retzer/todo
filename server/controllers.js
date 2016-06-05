@@ -39,7 +39,8 @@ function patchTodo(req, res) {
 
 function deleteTodo(req, res) {
   const query = { _id: req.params.todoId };
-  Todo.remove(query)
+  Todo
+    .remove(query)
     .then(result => {
       res.json(result);
     })

@@ -6,9 +6,11 @@ import { API_URL, JSON_CONTENT_TYPE } from '../constants';
 export default class App extends Component {
   constructor() {
     super();
+
     this.state = {
       todos: [],
     };
+
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleComplete = this.handleComplete.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
@@ -49,6 +51,7 @@ export default class App extends Component {
       throw err;
     });
   }
+
   handleComplete(todoToUpdate) {
     fetch(`${API_URL}/${todoToUpdate._id}`, {
       method: 'PATCH',
@@ -69,6 +72,7 @@ export default class App extends Component {
       throw err;
     });
   }
+
   handleDelete(todoToDelete) {
     fetch(`${API_URL}/${todoToDelete._id}`, {
       method: 'DELETE',
@@ -83,8 +87,8 @@ export default class App extends Component {
       throw err;
     });
   }
+
   render() {
-    console.log(this.state.todos);
     return (
       <main className="todoapp">
         <Header handleSubmit={this.handleSubmit} />

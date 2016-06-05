@@ -10,6 +10,7 @@ class Header extends Component {
     this.handleKeyDown = this.handleKeyDown.bind(this);
     this.handleChange = this.handleChange.bind(this);
   }
+
   handleKeyDown(e) {
     if (e.which === ENTER_KEY) {
       const text = e.target.value.trim();
@@ -17,9 +18,11 @@ class Header extends Component {
       this.props.handleSubmit(text);
     }
   }
+
   handleChange(e) {
     this.setState({ text: e.target.value });
   }
+
   render() {
     return (
       <header className="header">
