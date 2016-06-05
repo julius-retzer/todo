@@ -37,8 +37,20 @@ function patchTodo(req, res) {
     });
 }
 
+function deleteTodo(req, res) {
+  const query = { _id: req.params.todoId };
+  Todo.remove(query)
+    .then(result => {
+      res.json(result);
+    })
+    .catch(err => {
+      res.send(err);
+    });
+}
+
 module.exports = {
   postTodo,
   getTodos,
   patchTodo,
+  deleteTodo,
 };

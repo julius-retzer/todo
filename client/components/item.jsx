@@ -1,11 +1,9 @@
 import React from 'react';
 import classNames from 'classnames';
 
-const TodoItem = ({todo, handleComplete}) => {
+const TodoItem = ({ todo, handleComplete, handleDelete }) => {
   return (
-    <li className={classNames({
-          completed: todo.completed,
-        })}>
+    <li className={classNames({ completed: todo.completed })}>
       <div className="view">
         <input
           className="toggle"
@@ -16,7 +14,7 @@ const TodoItem = ({todo, handleComplete}) => {
         <label>
           {todo.title}
         </label>
-        <button className="destroy"/>
+        <button className="destroy" onClick={() => handleDelete(todo)}/>
       </div>
       <input
         className="edit"
