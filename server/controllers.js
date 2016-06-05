@@ -12,6 +12,18 @@ function postTodo(req, res) {
     });
 }
 
+function getTodos(req, res) {
+  Todo
+    .find()
+    .then(result => {
+      res.json(result);
+    })
+    .catch(err => {
+      res.send(err);
+    });
+}
+
 module.exports = {
   postTodo,
+  getTodos,
 };

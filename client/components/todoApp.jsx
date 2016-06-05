@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Header from './header.jsx';
 import Item from './item.jsx';
-import { API_URL } from '../constants';
+import { API_URL, JSON_CONTENT_TYPE } from '../constants';
 
 
 export default class App extends Component {
@@ -12,19 +12,34 @@ export default class App extends Component {
     };
     this.handleSubmit = this.handleSubmit.bind(this);
   }
+
+  componentDidMount() {
+    fetch(API_URL, {
+      method: 'GET',
+      headers: JSON_CONTENT_TYPE,
+    })
+    .then(response => response.json())
+    .then(todos => {
+      this.setState({
+        todos,
+      });
+    })
+    .catch(err => {
+      throw err;
+    });
+  }
+
   handleSubmit(newTodoTitle) {
     const newTodo = {
       title: newTodoTitle,
     };
     fetch(API_URL, {
       method: 'POST',
-      headers: new Headers({
-        'Content-Type': 'application/json',
-      }),
+      headers: JSON_CONTENT_TYPE,
       body: JSON.stringify(newTodo),
     })
     .then(response => response.json())
-    .then((todo) => {
+    .then(todo => {
       this.setState({
         todos: [...this.state.todos, todo],
       });
@@ -33,8 +48,9 @@ export default class App extends Component {
       throw err;
     });
   }
+
   render() {
-    console.log(this.state);
+    console.log(this.state.todos);
     return (
       <main className="todoapp">
         <Header handleSubmit={this.handleSubmit} />
@@ -43,7 +59,6 @@ export default class App extends Component {
             this.state.todos.map((todo, key) => (
               <Item
                 todo={todo}
-                editing={false}
                 key={key}
               />
             ))
