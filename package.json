@@ -1,5 +1,8 @@
 {
   "name": "todo",
+  "engines": {
+    "node": "^6.2"
+  },
   "scripts": {
     "start": "npm run start:client & npm run start:server",
     "start:client": "cd client && node server.js",
