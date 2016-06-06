@@ -1,7 +1,7 @@
 {
   "name": "todo",
   "scripts": {
-    "start": "npm run start:client",
+    "start": "npm run start:client & npm run start:server",
     "start:client": "cd client && node server.js",
     "start:server": "cd server && ../node_modules/.bin/nodemon app.js",
     "lint": "eslint ."

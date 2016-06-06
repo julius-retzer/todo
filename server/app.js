@@ -20,4 +20,4 @@ app.use('/', routes);
 mongoose.connect(MONGO_URL);
 
 app.listen(PORT);
-console.log(`Server running on http://localhost:${PORT}`); // eslint-disable-line no-console
+console.log(`Server running at http://localhost:${PORT}/`); // eslint-disable-line no-console
