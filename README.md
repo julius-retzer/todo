@@ -1,22 +1,9 @@
-# Todo appea
+# Todo app
 
-Based on [Dan Abramov's boilerplate](https://github.com/gaearon/react-hot-loader/)
+Add new todos by pressing enter, mark as completed with checkmark on the left and delete with the x on the right
 
-### Usage
+## Instructions
 
-```
-npm install
-npm start
-open http://localhost:3000
-```
-
-Now edit `src/App.js`.
-Your changes will appear without reloading the browser like in [this video](http://vimeo.com/100010922).
-
-### Linting
-
-This boilerplate project includes React-friendly ESLint configuration.
-
-```
-npm run lint
-```
+1. Run `npm i` in the root folder
+2. Run `npm start` to start the dev servers
+3. Open `http://localhost:3000` to open the app
