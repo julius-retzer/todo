@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import classNames from 'classnames';
 
 const TodoItem = ({ todo, handleComplete, handleDelete }) => {
@@ -21,6 +21,12 @@ const TodoItem = ({ todo, handleComplete, handleDelete }) => {
       />
     </li>
   );
+};
+
+TodoItem.propTypes = {
+  todo: PropTypes.object.isRequired,
+  handleComplete: PropTypes.func.isRequired,
+  handleDelete: PropTypes.func.isRequired,
 };
 
 export default TodoItem;
