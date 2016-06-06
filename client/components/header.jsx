@@ -12,8 +12,8 @@ class Header extends Component {
   }
 
   handleKeyDown(e) {
-    if (e.which === ENTER_KEY) {
-      const text = e.target.value.trim();
+    const text = e.target.value.trim();
+    if (text && e.which === ENTER_KEY) {
       this.setState({ text: '' });
       this.props.handleSubmit(text);
     }
