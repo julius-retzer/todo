@@ -1,3 +1,6 @@
+This was a homework for the interview proccess for Danske Bank in Denmark, Copenhagen.
+
+
 # Todo app
 
 Add new todos by pressing enter, mark as completed with checkmark on the left and delete with the x on the right
